@@ -1,0 +1,15 @@
+.progress {
+  background-color: var(--black-100);
+
+  .progress-bar {
+    background-color: var(--primary) !important;
+    color: var(--text-white);
+    font-weight: 500;
+  }
+}
+
+[data-theme='dark'] {
+  .progress {
+    background-color: var(--black-800); 
+  }
+}

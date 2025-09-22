@@ -1,0 +1,26 @@
+.font-weight-500 {
+  font-weight: 500 !important;
+}
+
+.font-weight-600 {
+  font-weight: 600 !important;
+}
+
+.font-weight-700 {
+  font-weight: 700 !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.cursor-pointer,
+.c-pointer {
+  cursor: pointer;
+}
+
+[data-theme='dark'] {
+  .text-muted {
+    color: var(--black-300) !important;
+  }
+}

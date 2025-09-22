@@ -1,0 +1,8 @@
+@use 'react-loading-skeleton/dist/skeleton.css';
+
+[data-theme='dark'] {
+  .react-loading-skeleton {
+    --base-color: var(--black-800);
+    --highlight-color: var(--black-700);
+  }
+}

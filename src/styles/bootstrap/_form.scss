@@ -1,0 +1,61 @@
+.form-control {
+  border-radius: 0.66667rem;
+  padding: .65rem 1rem;
+  &::placeholder {
+    color: var(--black-300) !important;
+    font-size: 1rem;
+  }
+
+  &:focus {
+    border-color: var(--primary);
+    box-shadow: none;
+  }
+}
+
+.form-label{
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+
+.eye-password{
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+}
+
+[data-theme='dark'] {
+  .form-control {
+    background-color: var(--black-900);
+    color: var(--text-white);
+    border: 1px solid var(--black-800);
+
+    &::placeholder {
+      color: var(--black-300) !important;
+    }
+
+    &:focus {
+      background-color: var(--black-900);
+      border-color: var(--primary);
+      box-shadow: none;
+    }
+
+    // Saat isInvalid atau error (Bootstrap)
+    &.is-invalid {
+      border-color: var(--danger) !important;
+      background-color: var(--black-900);
+      color: var(--text-white);
+
+      &:focus {
+        border-color: var(--danger) !important;
+        box-shadow: none;
+      }
+    }
+  }
+
+  // Optional: styling untuk feedback invalid message
+  .invalid-feedback {
+    color: var(--danger);
+    font-size: 0.875rem;
+  }
+}
+

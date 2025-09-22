@@ -1,0 +1,16 @@
+.card {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  border: 1px solid var(--card-border-color) ;
+
+  .card-header {
+    border-bottom: 1px solid var(--card-border-color);
+    background: transparent !important;
+  }
+
+  .card-footer {
+    border-top: 1px solid var(--card-border-color);
+    background: transparent !important;
+  }
+}

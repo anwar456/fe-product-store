@@ -1,0 +1,41 @@
+@use './colors' as *;
+@use 'sass:map';
+
+// ========================================
+// Root Variables
+// ========================================
+
+:root {
+  @each $name, $color in $grays {
+    --black-#{$name}: #{$color};
+  }
+
+  // Set base fallback
+  @each $key, $val in $base-colors-light {
+    --#{$key}: #{$val};
+  }
+}
+
+// ========================================
+// Generate theme variants
+// ========================================
+@each $theme-name, $theme in $themes {
+  @each $mode, $colors in $theme {
+    body[theme-color='#{$theme-name}']#{if($mode == 'dark', '[data-theme="dark"]', '')} {
+      @each $key, $val in $colors {
+        --#{$key}: #{$val};
+      }
+
+      // Inject base colors
+      @if $mode == 'light' {
+        @each $key, $val in $base-colors-light {
+          --#{$key}: #{$val};
+        }
+      } @else {
+        @each $key, $val in $base-colors-dark {
+          --#{$key}: #{$val};
+        }
+      }
+    }
+  }
+}

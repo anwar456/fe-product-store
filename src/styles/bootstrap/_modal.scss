@@ -1,0 +1,90 @@
+.modal-dialog {
+  @media (max-width: 576px) {
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+  }
+}
+
+.modal-body {
+  @media (max-width: 576px) {
+    height: calc(100vh - 11rem) !important;
+  }
+
+  @media (min-width: 577px) {
+    max-height: calc(100vh - 15rem);
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(100, 100, 100, 0.4);
+      border-radius: 3px;
+    }
+
+    &:hover::-webkit-scrollbar {
+      opacity: 1;
+    }
+
+    &:hover {
+      scrollbar-color: rgba(100, 100, 100, 0.4) transparent;
+    }
+  }
+}
+
+.custom-modal .modal-content {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--card-border-color);
+  transition: background-color 0.3s, color 0.3s;
+  @media (max-width: 576px) {
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+}
+
+.custom-modal .modal-header,
+.custom-modal .modal-footer {
+  border-color: var(--card-border-color);
+  background-color: transparent;
+}
+.custom-modal .modal-footer {
+  display: flex;
+  align-items: center;
+  @media (max-width: 576px) {
+    button.btn {
+      flex: 1 1 auto;
+    }
+  }
+}
+
+.custom-modal .btn-close {
+  border: none;
+  box-shadow: none;
+  outline: none;
+
+  &:focus,
+  &:active {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
+[data-theme='dark'] {
+  .custom-modal .btn-close {
+    filter: invert(1);
+  }
+}

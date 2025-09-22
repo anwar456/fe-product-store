@@ -1,0 +1,33 @@
+@mixin button-style($bg, $text, $border, $hover-bg, $hover-border) {
+  background-color: $bg !important;
+  color: $text !important;
+  border: 1px solid $border !important;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  padding: 0.6rem 1.3rem !important;
+
+  &:hover {
+    background-color: $hover-bg !important;
+    border-color: $hover-border !important;
+  }
+}
+
+.btn-primary {
+  @include button-style(
+    var(--primary),
+    var(--text-white),
+    var(--primary),
+    var(--btn-primary-hover),
+    var(--btn-primary-hover)
+  );
+}
+
+.btn-secondary {
+  @include button-style(
+    var(--secondary),
+    var(--text-primary),
+    var(--card-border-color),
+    var(--secondary-light),
+    var(--secondary-light)
+  );
+}

@@ -1,0 +1,20 @@
+.dropdown-menu {
+  border: 1px solid var(--card-border-color) !important;
+  background-color: var(--background) !important;
+  color: var(--text-primary) !important;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s ease-in-out;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+
+  .dropdown-item {
+    color: var(--text-primary) !important;
+    padding: 0.5rem 1rem !important;
+
+    &:hover {
+      color: var(--primary) !important;
+      background-color: var(--primary-light) !important;
+    }
+  }
+}
+.dropdown-divider {
+  border-top: 1px solid var(--card-border-color) !important;
+}

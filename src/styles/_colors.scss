@@ -1,0 +1,190 @@
+// ========================================
+// Colors
+// ========================================
+$themes: (
+  default: (
+    light: (
+      primary: #6366f1,
+      primary-light: #e0e7ff,
+      btn-primary-hover: #3730a3
+    ),
+    dark: (
+      primary: #6366f1,
+      primary-light: #3730a3,
+      btn-primary-hover: #4f46e5
+    )
+  ),
+  green: (
+    light: (
+      primary: #22c55e,
+      primary-light: #bbf7d0,
+      btn-primary-hover: #15803d
+    ),
+    dark: (
+      primary: #22c55e,
+      primary-light: #14532d,
+      btn-primary-hover: #166534
+    )
+  ),
+  red: (
+    light: (
+      primary: #ef4444,
+      primary-light: #fecaca,
+      btn-primary-hover: #b91c1c
+    ),
+    dark: (
+      primary: #ef4444,
+      primary-light: #7f1d1d,
+      btn-primary-hover: #dc2626
+    )
+  ),
+  blue: (
+    light: (
+      primary: #3b82f6,
+      primary-light: #dbeafe,
+      btn-primary-hover: #1d4ed8
+    ),
+    dark: (
+      primary: #3b82f6,
+      primary-light: #1e3a8a,
+      btn-primary-hover: #2563eb
+    )
+  ),
+  orange: (
+    light: (
+      primary: #f97316,
+      primary-light: #ffedd5,
+      btn-primary-hover: #c2410c
+    ),
+    dark: (
+      primary: #f97316,
+      primary-light: #7c2d12,
+      btn-primary-hover: #ea580c
+    )
+  ),
+  yellow: (
+    light: (
+      primary: #eab308,
+      primary-light: #fef9c3,
+      btn-primary-hover: #a16207
+    ),
+    dark: (
+      primary: #eab308,
+      primary-light: #78350f,
+      btn-primary-hover: #ca8a04
+    )
+  ),
+  pink: (
+    light: (
+      primary: #ec4899,
+      primary-light: #fce7f3,
+      btn-primary-hover: #be185d
+    ),
+    dark: (
+      primary: #ec4899,
+      primary-light: #831843,
+      btn-primary-hover: #db2777
+    )
+  ),
+  teal: (
+    light: (
+      primary: #14b8a6,
+      primary-light: #ccfbf1,
+      btn-primary-hover: #0f766e
+    ),
+    dark: (
+      primary: #14b8a6,
+      primary-light: #134e4a,
+      btn-primary-hover: #0d9488
+    )
+  ),
+  purple: (
+    light: (
+      primary: #a855f7,            
+      primary-light: #f3e8ff,      
+      btn-primary-hover: #7e22ce   
+    ),
+    dark: (
+      primary: #c084fc,            
+      primary-light: #581c87,     
+      btn-primary-hover: #9333ea   
+    )
+  ),
+  cyan: (
+    light: (
+      primary: #06b6d4,
+      primary-light: #cffafe,
+      btn-primary-hover: #0e7490
+    ),
+    dark: (
+      primary: #06b6d4,
+      primary-light: #164e63,
+      btn-primary-hover: #0891b2
+    )
+  ),
+  brown: (
+    light: (
+      primary: #a16207,            
+      primary-light: #fef3c7,      
+      btn-primary-hover: #854d0e   
+    ),
+    dark: (
+      primary: #78350f,            
+      primary-light: #431407,      
+      btn-primary-hover: #92400e   
+    )
+  )
+);
+
+
+$base-colors-light: (
+  secondary: #f1f3f5,
+  secondary-light: #f8f9fa,
+  success: #198754,
+  success-light: #d1e7dd,
+  warning: #ffc107,
+  warning-light: #fff3cd,
+  danger: #dc3545,
+  danger-light: #f8d7da,
+  background: #ffffff,
+  surface: #fefefe,
+  text-primary: #212529,
+  text-secondary: #6c757d,
+  text-white: #ffffff,
+  black-100: #e6e6e6,
+  card-border-color: #e6e6e6
+);
+
+$base-colors-dark: (
+  secondary: #1a1a1a,
+  secondary-light: #3a3f44,
+  success: #198754,
+  success-light: #22543d,
+  warning: #ffc107,
+  warning-light: #806e00,
+  danger: #dc3545,
+  danger-light: #661015,
+  background: #121212,
+  surface: #181818,
+  text-primary: #ffffff,
+  text-secondary: #b0b0b0,
+  black-100: #4d4d4d,
+  black-25: #262626,
+  card-border-color: #333333
+);
+
+// Grayscale map
+$grays: (
+  25: #f9f9f9,
+  50: #f2f2f2,
+  100: #e6e6e6,
+  200: #cccccc,
+  300: #b3b3b3,
+  400: #999999,
+  500: #808080,
+  600: #666666,
+  700: #4d4d4d,
+  800: #333333,
+  900: #1a1a1a,
+  black: #1a1a1a
+);

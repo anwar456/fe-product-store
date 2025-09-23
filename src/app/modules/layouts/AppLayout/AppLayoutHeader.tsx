@@ -1,39 +1,34 @@
-import { DFlex, DFlexJustifyBetween, DFlexJustifyEnd } from '@app/styled/flex.styled'
-import { P20Medium } from '@app/styled/text.styled'
+import { DFlex } from '@app/styled/flex.styled'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import DropdownAvatar from '../DropdownAvatar'
-import ModeTheme from '../ModeTheme'
+import AppsLogo from '../../../../assets/logo/AppsLogo'
 
 export default function AppLayoutHeader() {
   const navigate = useNavigate()
   return (
     <>
       <HeaderStyled>
-        <DFlexJustifyBetween>
-          <div className="cursor-pointer" onClick={() => navigate('/home')}>
-            <P20Medium className="font-weight-700 text-primary">TABUNGAN</P20Medium>
-          </div>
-          <DFlexJustifyEnd>
-            <DFlex className="gap-2">
-              <ModeTheme />
-              <DropdownAvatar />
-            </DFlex>
-          </DFlexJustifyEnd>
-        </DFlexJustifyBetween>
+        <div className="cursor-pointer" onClick={() => navigate('/home')}>
+          <AppsLogo />
+        </div>
+        <DFlex className="gap-2">
+          {/* <ModeTheme /> */}
+          <DropdownAvatar />
+        </DFlex>
       </HeaderStyled>
     </>
   )
 }
 
 const HeaderStyled = styled.div`
-  padding: 0.6rem 1.6rem;
   border-bottom: 1px solid var(--card-border-color);
-  background-color: var(--surface);
-  position: fixed;
-  top: 0;
-  z-index: 999;
+  display: flex;
+  height: 4rem;
+  padding: 0 6.66667rem;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 
   @media (max-width: 576px) {

@@ -1,24 +1,25 @@
 ul.react-paginate {
+  display: flex;
+  align-items: center;
+  gap: 0.66667rem;
   margin-bottom: 0;
-  border-radius: 0.25rem;
-  padding: 0 0.25rem !important;
 }
 
 .pagination {
   li.page-item {
     a.page-link {
-      color: var(--black);
-      background-color: var(--background);
+      display: flex;
+      width: 2.6rem;
+      height: 2.6rem;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      border-color: var(--card-border-color);
-      border-radius: 0.25rem;
-      margin-left: 6px;
-      line-height: inherit;
-      transition: all 0.1s ease-in-out;
-      font-size: 0.933rem !important;
-      [data-theme='dark'] & {
-        background-color: var(--black-900);
-      }
+      gap: 0.83333rem;
+      aspect-ratio: 1/1;
+      border-radius: 0.83333rem;
+      border: 1px solid var(--black-100);
+      color: var(--black);
+      font-size: 0.9rem;
 
       // Efek saat hover/focus
       &:hover,
@@ -26,17 +27,16 @@ ul.react-paginate {
       &:focus-visible {
         outline: none;
         border-color: var(--primary);
+        background: var(--primary);
+        color: #fff;
         box-shadow: none;
       }
     }
 
     &.active a.page-link {
-      z-index: 2;
+      background: var(--primary);
+      border: none;
       color: #fff;
-      background-color: var(--primary);
-      border-color: var(--primary);
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
 
       // Hindari box-shadow dobel saat aktif
       &:hover,
@@ -49,10 +49,9 @@ ul.react-paginate {
 
     &.disabled {
       .page-link {
-        color: #c2c2c2 !important;
-        background-color: transparent !important;
-        border-color: transparent;
-        box-shadow: none;
+        border: 1px solid var(--black-100);
+        background: transparent;
+        cursor: not-allowed;
       }
     }
   }

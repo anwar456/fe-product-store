@@ -1,11 +1,11 @@
 import Button from '@app/components/Buttons/Button'
 import FormInputControl from '@app/components/Input/FormInputControl'
 import { DFlex, DFlexColumn } from '@app/styled/flex.styled'
-import { LoginBox, LoginLayoutContainer, ThemeModeWrapper } from '@app/styled/login.styled'
+import { LoginBox, LoginLayoutContainer } from '@app/styled/login.styled'
 import { P14Medium, P20Medium } from '@app/styled/text.styled'
 import React from 'react'
 import { Alert, Card, Col, Form, Row } from 'react-bootstrap'
-import ModeTheme from '../ModeTheme'
+import AppsLogo from '../../../../assets/logo/AppsLogo'
 
 interface Props {
   handleSubmit: any
@@ -20,21 +20,16 @@ export default function LoginLayout({ handleSubmit, onSubmitForm, register, erro
   return (
     <>
       <LoginLayoutContainer>
-        <ThemeModeWrapper>
-          <DFlex className="gap-2">
-            <ModeTheme isLabel />
-          </DFlex>
-        </ThemeModeWrapper>
         <LoginBox>
           <Form onSubmit={handleSubmit(onSubmitForm)}>
             <Card className="card-form">
-              <Card.Header className="border-0 py-4">
-                <DFlexColumn className="align-items-center gap-2">
-                  <P20Medium className="font-weight-700 text-center">Signin to application</P20Medium>
-                  <P14Medium className="text-muted text-center">Sign in to explore all application’s features.</P14Medium>
-                </DFlexColumn>
+              <Card.Header className="border-0 py-4 px-0 mb-3">
+                <div className="d-flex flex-column gap-3">
+                  <AppsLogo />
+                  <P14Medium className="text-muted">Enter your username and password correctly</P14Medium>
+                </div>
               </Card.Header>
-              <Card.Body>
+              <Card.Body className="p-0">
                 <Row className="g-3">
                   {error && (
                     <Col md={12}>
@@ -64,7 +59,7 @@ export default function LoginLayout({ handleSubmit, onSubmitForm, register, erro
                   </Col>
                 </Row>
               </Card.Body>
-              <Card.Footer className="border-0 bg-transparent py-4">
+              <Card.Footer className="border-0 bg-transparent py-4 px-0">
                 <Button text="Sign In" className="w-100" type="submit" loading={loading} />
               </Card.Footer>
             </Card>

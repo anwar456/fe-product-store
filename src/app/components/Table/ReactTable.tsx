@@ -1,6 +1,7 @@
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Column, useTable } from 'react-table'
+import ErrorNoData from '../Error/ErrorNoData'
 
 interface IReactTable {
   columns: Column<any>[]
@@ -16,9 +17,9 @@ export default function ReactTable({ columns, data, loading = false, noData = fa
   })
 
   return (
-    <div className="mt-4 mb-2 table-wrapper">
+    <div className="mt-0 mb-0 table-wrapper">
       <div className="table-responsive">
-        <table {...getTableProps()} className="table">
+        <table {...getTableProps()} className="table m-0">
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
@@ -55,7 +56,7 @@ export default function ReactTable({ columns, data, loading = false, noData = fa
                 ) : (
                   <tr>
                     <td colSpan={columns.length} style={{ textAlign: 'center' }}>
-                      Tidak ada data
+                      <ErrorNoData />
                     </td>
                   </tr>
                 )}

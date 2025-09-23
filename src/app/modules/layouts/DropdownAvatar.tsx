@@ -1,4 +1,5 @@
 import ArrowOut from '@app/components/Icons/ArrowOut'
+import CarretDownIcon from '@app/components/Icons/CarretDownIcon'
 import HomeIcon from '@app/components/Icons/HomeIcon'
 import PersonIcon from '@app/components/Icons/PersonIcon'
 import WalletIcon from '@app/components/Icons/WalletIcon'
@@ -56,10 +57,14 @@ export default function DropdownAvatar() {
     <>
       <Dropdown>
         <StyledToggle variant="" id="dropdown-avatar">
-          <LazyImage src={`/static/male.svg`} alt="Avatar" defaultImage={`/static/male.svg`} width={40} height={40} className="image-circle" />
+          <DFlex>
+            <CarretDownIcon />
+            <P14Medium>Admin1</P14Medium>
+            <LazyImage src={`/static/male.svg`} alt="Avatar" defaultImage={`/static/male.svg`} width={40} height={40} className="image-circle" />
+          </DFlex>
         </StyledToggle>
 
-        <Dropdown.Menu className="mt-3">
+        <Dropdown.Menu className="animate__animated animate__zoomIn animate__faster mt-3">
           <Dropdown.Item>
             <P14Medium>Hallo, {authUser?.name}</P14Medium>
           </Dropdown.Item>
@@ -67,19 +72,13 @@ export default function DropdownAvatar() {
           <Dropdown.Item className="mb-1" onClick={() => navigate('/home')}>
             <DFlex className="gap-2">
               <HomeIcon />
-              <P14Medium>Home</P14Medium>
+              <P14Medium>Product</P14Medium>
             </DFlex>
           </Dropdown.Item>
           <Dropdown.Item className="mb-1" onClick={() => navigate('/profile')}>
             <DFlex className="gap-2">
               <PersonIcon />
-              <P14Medium>Profil</P14Medium>
-            </DFlex>
-          </Dropdown.Item>
-          <Dropdown.Item className="mb-1" onClick={() => navigate('/saving')}>
-            <DFlex className="gap-2">
-              <WalletIcon width={20} />
-              <P14Medium>Tabungan</P14Medium>
+              <P14Medium>Profile</P14Medium>
             </DFlex>
           </Dropdown.Item>
           <Dropdown.Divider />

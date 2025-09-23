@@ -8,7 +8,7 @@ const Index = React.lazy(() => import(`@app/pages/IndexRouting`))
 export default function AppRouting() {
   return (
     <Routes>
-      <Route path="" element={<Navigate to={'/home'} />} />
+      <Route path="" element={<Navigate to={'/product'} />} />
       <Route
         path="/signin"
         element={
@@ -20,11 +20,11 @@ export default function AppRouting() {
       <Route
         path="*"
         element={
-          <ProtectedRoutes>
-            <React.Suspense>
-              <Index />
-            </React.Suspense>
-          </ProtectedRoutes>
+          // <ProtectedRoutes>
+          <React.Suspense>
+            <Index />
+          </React.Suspense>
+          // </ProtectedRoutes>
         }
       />
       <Route

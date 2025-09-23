@@ -83,6 +83,17 @@
   }
 }
 
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+}
+.modal-backdrop.show {
+  opacity: 1;
+  transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+}
 [data-theme='dark'] {
   .custom-modal .btn-close {
     filter: invert(1);

@@ -2,7 +2,7 @@
   background-color: $bg !important;
   color: $text !important;
   border: 1px solid $border !important;
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.3s ease-in-out;
   padding: 0.6rem 1.3rem !important;
 
@@ -13,21 +13,9 @@
 }
 
 .btn-primary {
-  @include button-style(
-    var(--primary),
-    var(--text-white),
-    var(--primary),
-    var(--btn-primary-hover),
-    var(--btn-primary-hover)
-  );
+  @include button-style(var(--primary), var(--text-white), var(--primary), var(--primary-600), var(--primary-600));
 }
 
 .btn-secondary {
-  @include button-style(
-    var(--secondary),
-    var(--text-primary),
-    var(--card-border-color),
-    var(--secondary-light),
-    var(--secondary-light)
-  );
+  @include button-style(var(--secondary), var(--text-primary), var(--black-100), var(--secondary), var(--black-100));
 }

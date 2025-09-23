@@ -9,9 +9,7 @@ export default function AppLayout() {
     <>
       <AppLayoutHeader />
       <ContainerWrapper>
-        <Container className="py-3">
-          <Outlet />
-        </Container>
+        <Outlet />
       </ContainerWrapper>
     </>
   )
@@ -20,6 +18,6 @@ export default function AppLayout() {
 const ContainerWrapper = styled.div`
   position: relative;
   margin: 0px;
-  padding-top: 4rem;
   overflow-y: auto;
+  padding: 4rem 6.66667rem;
 `

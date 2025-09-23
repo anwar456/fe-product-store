@@ -9,9 +9,11 @@ export const LoginLayoutContainer = styled.div`
 `
 
 export const LoginBox = styled.div`
-  width: 33.33333rem;
+  width: 34.5rem;
   .card-form {
-    padding: 3rem;
+    border-radius: 2rem;
+    border: 1px solid var(--black-100);
+    padding: 2.66667rem;
   }
   @media (max-width: 900px) {
     .card-form {

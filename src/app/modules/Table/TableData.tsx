@@ -142,7 +142,7 @@ export default function TableData({ path, columnsConfig = [], respDataApi, rowDa
   return (
     <>
       <ReactTable columns={columnsConfig} data={tableData} loading={loading} noData={noData} />
-      <Pagination pageCount={1} onPageChange={handlePageChange} forcePage={page} />
+      <Pagination pageCount={10} onPageChange={handlePageChange} forcePage={page} />
 
       <ModalConfirm modalConfirmProps={modalConfirm} callbackModalConfirm={callbackModalConfirm} />
     </>

@@ -1,5 +1,14 @@
+.dropdown-toggle {
+  &::after {
+    display: none !important;
+  }
+  border: 1px solid var(--black-100) !important;
+  padding: 0.7rem;
+  border-radius: 0.83333rem;
+}
+
 .dropdown-menu {
-  border: 1px solid var(--card-border-color) !important;
+  border: 1px solid var(--black-100) !important;
   background-color: var(--background) !important;
   color: var(--text-primary) !important;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s ease-in-out;
@@ -8,13 +17,13 @@
   .dropdown-item {
     color: var(--text-primary) !important;
     padding: 0.5rem 1rem !important;
-
+    font-size: 0.9rem;
     &:hover {
       color: var(--primary) !important;
-      background-color: var(--primary-light) !important;
+      background-color: var(--primary-50) !important;
     }
   }
 }
 .dropdown-divider {
-  border-top: 1px solid var(--card-border-color) !important;
+  border-top: 1px solid var(--black-100) !important;
 }

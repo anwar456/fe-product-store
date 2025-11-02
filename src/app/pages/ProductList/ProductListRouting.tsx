@@ -3,7 +3,6 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 const ProductListPage = React.lazy(() => import(`@app/pages/ProductList/ProductListPage`))
-const ProductListDetailPage = React.lazy(() => import(`@app/pages/ProductList/ProductListDetailPage`))
 
 const ProductListRouting = () => {
   return (
@@ -13,14 +12,6 @@ const ProductListRouting = () => {
         element={
           <React.Suspense>
             <ProductListPage />
-          </React.Suspense>
-        }
-      />
-      <Route
-        path="detail/:id"
-        element={
-          <React.Suspense>
-            <ProductListDetailPage />
           </React.Suspense>
         }
       />

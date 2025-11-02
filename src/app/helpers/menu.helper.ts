@@ -16,7 +16,6 @@ export const goTo = (auth: any, navigate: ReturnType<typeof useNavigate>) => {
 
   if (accessibleMenus.length > 0) {
     const firstMenu = accessibleMenus[0]
-    console.log('Navigating to:', firstMenu.path)
     navigate(firstMenu.path)
   } else {
     console.warn('Tidak ada menu yang bisa diakses untuk user ini.')

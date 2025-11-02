@@ -1,5 +1,4 @@
 import Error404 from '@app/components/Error/Error404'
-import { MENU } from '@app/config/menu.config'
 import AppLayout from '@app/modules/layouts/AppLayout/AppLayout'
 import AppProductListLayout from '@app/modules/layouts/AppLayout/AppProductListLayout'
 import React from 'react'
@@ -8,9 +7,9 @@ import ManagementUserRouting from './ManagementUser/ManagementUserRouting'
 import ProductRouting from './Product/ProductRouting'
 import ProductListRouting from './ProductList/ProductListRouting'
 
-export default function IndexRouting() {
-  const menuId = MENU?.find((item: any) => item?.id === 'dbmbf')
+const ProductListDetailPage = React.lazy(() => import(`@app/pages/ProductList/ProductListDetailPage`))
 
+export default function IndexRouting() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
@@ -32,12 +31,23 @@ export default function IndexRouting() {
         />
       </Route>
 
-      <Route element={menuId ? <AppLayout /> : <AppProductListLayout />}>
+      <Route element={<AppProductListLayout />}>
         <Route
           path="product-list/*"
           element={
             <React.Suspense>
               <ProductListRouting />
+            </React.Suspense>
+          }
+        />
+      </Route>
+
+      <Route element={<AppLayout />}>
+        <Route
+          path="product-list/detail/:id*"
+          element={
+            <React.Suspense>
+              <ProductListDetailPage />
             </React.Suspense>
           }
         />

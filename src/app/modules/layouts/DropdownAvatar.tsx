@@ -25,6 +25,7 @@ export default function DropdownAvatar({ isUser = false }: Props) {
   const dispatch = useDispatch()
 
   const allowProduct = checkingPermissionAccess({ permissionId: authUser?.permissionId, access: 'view', id: 'vgoif' })
+  const allowProductList = checkingPermissionAccess({ permissionId: authUser?.permissionId, access: 'view', id: 'qkcmw' })
   const allowuser = checkingPermissionAccess({ permissionId: authUser?.permissionId, access: 'view', id: 'qeuln' })
 
   const [modalConfirm, setModalConfirm] = useState<any>({
@@ -83,12 +84,20 @@ export default function DropdownAvatar({ isUser = false }: Props) {
           <Dropdown.Item>
             <P14Medium>Hallo, {authUser?.name}</P14Medium>
           </Dropdown.Item>
-          {(allowProduct || allowuser) && <Dropdown.Divider style={{ border: '1px solid var(--card-border-color) !important' }} />}
+          {(allowProduct || allowuser || allowProductList) && <Dropdown.Divider style={{ border: '1px solid var(--card-border-color) !important' }} />}
           {allowProduct && (
             <Dropdown.Item className="mb-1" onClick={() => navigate('/product')}>
               <DFlex className="gap-2">
                 <HomeIcon />
                 <P14Medium>Product</P14Medium>
+              </DFlex>
+            </Dropdown.Item>
+          )}
+          {allowProductList && (
+            <Dropdown.Item className="mb-1" onClick={() => navigate('/product-list')}>
+              <DFlex className="gap-2">
+                <HomeIcon />
+                <P14Medium>Product List</P14Medium>
               </DFlex>
             </Dropdown.Item>
           )}

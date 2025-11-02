@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import ProtectedRoutes from './modules/Protected/ProtectedRoutes'
+import Error404 from './components/Error/Error404'
 
 const SigninPage = React.lazy(() => import(`@app/pages/Auth/SigninPage`))
 const Index = React.lazy(() => import(`@app/pages/IndexRouting`))
@@ -20,21 +21,14 @@ export default function AppRouting() {
       <Route
         path="*"
         element={
-          // <ProtectedRoutes>
-          <React.Suspense>
-            <Index />
-          </React.Suspense>
-          // </ProtectedRoutes>
+          <ProtectedRoutes>
+            <React.Suspense>
+              <Index />
+            </React.Suspense>
+          </ProtectedRoutes>
         }
       />
-      <Route
-        path="*"
-        element={
-          <>
-            <h3>ERROR 404</h3>
-          </>
-        }
-      />
+      <Route path="*" element={<Error404 />} />
     </Routes>
   )
 }

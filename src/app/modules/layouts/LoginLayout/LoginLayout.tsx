@@ -1,10 +1,12 @@
-import Button from '@app/components/Buttons/Button'
+import XCircleIcon from '@app/components/Icons/XCircleIcon'
 import FormInputControl from '@app/components/Input/FormInputControl'
-import { DFlex, DFlexColumn } from '@app/styled/flex.styled'
+import { DFlex } from '@app/styled/flex.styled'
+import { Loader } from '@app/styled/loader.styled'
 import { LoginBox, LoginLayoutContainer } from '@app/styled/login.styled'
-import { P14Medium, P20Medium } from '@app/styled/text.styled'
+import { P14Medium } from '@app/styled/text.styled'
 import React from 'react'
-import { Alert, Card, Col, Form, Row } from 'react-bootstrap'
+import { Alert, Button, Card, Col, Form, Row } from 'react-bootstrap'
+import styled from 'styled-components'
 import AppsLogo from '../../../../assets/logo/AppsLogo'
 
 interface Props {
@@ -33,18 +35,20 @@ export default function LoginLayout({ handleSubmit, onSubmitForm, register, erro
                 <Row className="g-3">
                   {error && (
                     <Col md={12}>
-                      <Alert variant="danger" className="py-2">
-                        Invalid username or password
-                      </Alert>
+                      <AlertDanger variant="danger" className="py-2 animate__animated animate__headShake animate__faster">
+                        <DFlex className='gap-2'>
+                          <XCircleIcon /> <P14Medium>Invalid email or password</P14Medium>
+                        </DFlex>
+                      </AlertDanger>
                     </Col>
                   )}
                   <Col md={12}>
                     <FormInputControl
-                      label="Username"
-                      placeholder="Input username"
-                      register={register('username')}
-                      isInvalid={errors?.username as boolean | undefined}
-                      message={errors?.username?.message}
+                      label="Email"
+                      placeholder="Input email"
+                      register={register('email')}
+                      isInvalid={errors?.email as boolean | undefined}
+                      message={errors?.email?.message}
                     />
                   </Col>
                   <Col md={12}>
@@ -60,7 +64,12 @@ export default function LoginLayout({ handleSubmit, onSubmitForm, register, erro
                 </Row>
               </Card.Body>
               <Card.Footer className="border-0 bg-transparent py-4 px-0">
-                <Button text="Sign In" className="w-100" type="submit" loading={loading} />
+                <Button className="w-100" type="submit">
+                  <DFlex className="gap-2 justify-content-center">
+                    <P14Medium>Sign In</P14Medium>
+                    {loading && <Loader color="#fff" size={23} />}
+                  </DFlex>
+                </Button>
               </Card.Footer>
             </Card>
           </Form>
@@ -69,3 +78,13 @@ export default function LoginLayout({ handleSubmit, onSubmitForm, register, erro
     </>
   )
 }
+
+const AlertDanger = styled(Alert)`
+  &.alert {
+    background-color: #fdecea;
+    color: #d93025;
+    border: none;
+    font-weight: 500;
+    /* border: 1px solid var(--danger); */
+  }
+`

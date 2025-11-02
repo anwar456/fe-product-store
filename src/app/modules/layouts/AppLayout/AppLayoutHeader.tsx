@@ -1,16 +1,20 @@
+import { goTo } from '@app/helpers/menu.helper'
 import { DFlex } from '@app/styled/flex.styled'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import DropdownAvatar from '../DropdownAvatar'
 import AppsLogo from '../../../../assets/logo/AppsLogo'
+import DropdownAvatar from '../DropdownAvatar'
 
 export default function AppLayoutHeader() {
+  const { authUser } = useSelector((state: any) => state.auth)
   const navigate = useNavigate()
+
   return (
     <>
       <HeaderStyled>
-        <div className="cursor-pointer" onClick={() => navigate('/home')}>
+        <div className="cursor-pointer" onClick={() => goTo(authUser, navigate)}>
           <AppsLogo />
         </div>
         <DFlex className="gap-2">

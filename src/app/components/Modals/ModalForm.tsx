@@ -85,9 +85,11 @@ export default function ModalForm({ modalProps, onHide, children, ids = 'id', ba
         {...props}
       >
         <Modal.Header className="py-2" closeButton>
-          <DFlexColumn className="gap-0">
+          <DFlexColumn className="gap-1">
             <Title className="m-0">{modalProps?.title}</Title>
-            <P14Medium className="text-muted">{modalProps?.description}</P14Medium>
+            <P14Medium className="text-muted" style={{ fontSize: '0.875rem' }}>
+              {modalProps?.description}
+            </P14Medium>
           </DFlexColumn>
         </Modal.Header>
         {children}
@@ -97,7 +99,7 @@ export default function ModalForm({ modalProps, onHide, children, ids = 'id', ba
 }
 
 export const Title = styled.h4`
-  font-size: 1.46rem;
+  font-size: 1.25rem;
   font-weight: 600;
   width: 57%;
   line-height: 1.5;

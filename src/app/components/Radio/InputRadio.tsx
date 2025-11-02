@@ -24,7 +24,7 @@ export default function InputRadio({ fieldName, control, options, required }: Pr
       rules={required ? { required: 'Harap pilih salah satu' } : undefined}
       render={({ field, fieldState }) => (
         <div>
-          <DFlex>
+          <DFlex className="gap-1">
             {options.map((opt, idx) => (
               <RadioButton key={idx} className={field.value === opt.value ? 'active' : ''} onClick={() => field.onChange(opt.value)}>
                 <Form.Check

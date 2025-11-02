@@ -1,7 +1,9 @@
+import { goTo } from '@app/helpers/menu.helper'
 import LoginLayout from '@app/modules/layouts/LoginLayout/LoginLayout'
 import api from '@app/services/api-request.service'
 import { loginUser, setLoggedInUserDetail } from '@app/store/reducers/auth'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { get } from 'lodash'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
@@ -9,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 
 const schema = yup.object().shape({
-  username: yup.string().required(),
+  email: yup.string().required(),
   password: yup.string().required(),
 })
 
@@ -33,15 +35,20 @@ export default function LoginFeatures() {
         url: '/auth/login',
         data: { ...data },
       })
-      if (res?.data) {
+      const user = get(res, 'data')
+      if (user) {
         dispatch(setLoggedInUserDetail(res?.data?.user))
         dispatch(loginUser({ refresh: res?.data?.auth?.refreshToken, access: res?.data?.auth?.accessToken }))
         setError(false)
-        navigate('/home')
+        goTo(user?.user, navigate)
       }
     } catch (error) {
       setLoading(false)
       setError(true)
+      setTimeout(() => {
+        setError(false)
+      }, 2000)
+      navigate('/signin')
       console.log(error)
     } finally {
       setLoading(false)

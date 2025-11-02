@@ -1,70 +1,42 @@
-import CarretDownIcon from '@app/components/Icons/CarretDownIcon'
-import PlusIcon from '@app/components/Icons/PlusIcon'
 import SortAscendingIcon from '@app/components/Icons/SortAscendingIcon'
 import FormInputSearch from '@app/components/Input/FormInputSearch'
 import { DFlex } from '@app/styled/flex.styled'
 import { P14Medium } from '@app/styled/text.styled'
-import React from 'react'
-import { Button, Dropdown } from 'react-bootstrap'
+import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { Button } from 'react-bootstrap'
 import styled from 'styled-components'
 
-export default function DataFilter() {
+interface IDataFileter {
+  leftFilterComponents?: any
+  rightFilterComponents?: any
+  callbackSearch?: any
+  callbackOrder?: (order: 'asc' | 'desc') => void
+}
+
+export default function DataFilter({ leftFilterComponents, rightFilterComponents, callbackSearch, callbackOrder }: IDataFileter) {
+  const [order, setOrder] = useState<'asc' | 'desc'>('desc')
+
+  const handleOrder = () => {
+    const newOrder = order === 'asc' ? 'desc' : 'asc'
+    setOrder(newOrder)
+    if (callbackOrder) callbackOrder(newOrder)
+  }
+
   return (
     <WrapperStyled className="w-100">
       <DFlex>
-        <FormInputSearch />
-        <Dropdown>
-          <Dropdown.Toggle variant="">
-            <DFlex>
-              <P14Medium>Semua Kategori</P14Medium>
-              <CarretDownIcon />
-            </DFlex>
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu className="animate__animated animate__zoomIn animate__faster">
-            <Dropdown.Item>Action</Dropdown.Item>
-            <Dropdown.Item>Another action</Dropdown.Item>
-            <Dropdown.Item>Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Dropdown>
-          <Dropdown.Toggle variant="">
-            <DFlex>
-              <P14Medium>Semua Status</P14Medium>
-              <CarretDownIcon />
-            </DFlex>
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu className="animate__animated animate__zoomIn animate__faster">
-            <Dropdown.Item>Menipis</Dropdown.Item>
-            <Dropdown.Item>Aktif</Dropdown.Item>
-            <Dropdown.Item>Nonaktif</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+        <FormInputSearch callbackSearch={callbackSearch} />
+        {leftFilterComponents}
       </DFlex>
       <DFlex>
-        <DFlex className="gap-2">
-          <P14Medium className="font-weight-500">Urutkan:</P14Medium>
-          <Dropdown>
-            <Dropdown.Toggle variant="">
-              <DFlex>
-                <P14Medium>Nama Produk</P14Medium>
-                <CarretDownIcon />
-              </DFlex>
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu className="animate__animated animate__zoomIn animate__faster">
-              <Dropdown.Item>Nama Produk</Dropdown.Item>
-              <Dropdown.Item>Kategori</Dropdown.Item>
-              <Dropdown.Item>Stok</Dropdown.Item>
-              <Dropdown.Item>Harga</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </DFlex>
-        <Button variant="secondary">
+        {rightFilterComponents}
+        <Button variant="secondary" onClick={handleOrder}>
           <DFlex className="gap-1">
-            <SortAscendingIcon />
-            <P14Medium>Asc</P14Medium>
+            <motion.div animate={{ rotate: order === 'asc' ? 0 : 180 }} transition={{ duration: 0.3, ease: 'easeInOut' }} style={{ display: 'flex' }}>
+              <SortAscendingIcon />
+            </motion.div>
+            <P14Medium>{order === 'asc' ? 'Asc' : 'Desc'}</P14Medium>
           </DFlex>
         </Button>
       </DFlex>

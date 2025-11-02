@@ -4,11 +4,11 @@ import api from '@app/services/api-request.service'
 import { setCallbackForm } from '@app/store/reducers/ui'
 import axios from 'axios'
 import { get, head, isArray, isBoolean, isObject, isPlainObject, isString, merge, omit, pick, size } from 'lodash'
-
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useSearchParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export default function FormData({
   children,
@@ -80,10 +80,11 @@ export default function FormData({
             url: PATH_ADD,
             data: params,
           })
-
+      toast.success(`Success ${getIdParams ? 'udpated' : 'add'} data`)
       dispatch(setCallbackForm(resp))
     } catch (error) {
       console.log(error)
+      toast.error(`Failed ${getIdParams ? 'updated' : 'add'} Data`)
       setLoadingForm(false)
     }
   }

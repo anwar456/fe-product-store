@@ -1,12 +1,11 @@
-import { getItem, setItem } from '@app/helpers/localstorage.helper';
-import { createSlice } from '@reduxjs/toolkit';
+import { getItem, setItem } from '@app/helpers/localstorage.helper'
+import { createSlice } from '@reduxjs/toolkit'
 
-const isCollapsed = getItem('_sidebar_collapsed', false);
+const isCollapsed = getItem('_sidebar_collapsed', false)
 
 const initialState = {
   themeMode: getItem('_theme_mode', 'light'),
   themeColor: getItem('_theme_color', 'default'),
-  // activePage: getActivePageMenu(),
   activeFilters: null,
   formTitle: null,
   isSidebarMenuCollapsed: isCollapsed == 0 ? true : isCollapsed,
@@ -23,86 +22,82 @@ const initialState = {
   layoutType: 'sidebar',
   searchValue: '',
   autoRefresh: null,
-  // layoutType: getItem('layoutType', 'sidebar'),
-};
+}
 
 export const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
     setThemeMode: (state, { payload }) => {
-      setItem('_theme_mode', payload);
-      state.themeMode = payload;
+      setItem('_theme_mode', payload)
+      state.themeMode = payload
     },
     setThemeColor: (state, { payload }) => {
-      setItem('_theme_color', payload);
-      state.themeColor = payload;
+      setItem('_theme_color', payload)
+      state.themeColor = payload
     },
 
     setMenuStyle: (state, { payload }) => {
-      setItem('_m_style', payload);
-      state.menuStyle = payload;
+      setItem('_m_style', payload)
+      state.menuStyle = payload
     },
     // setActivePage: (state, { payload }) => {
     //   state.activePage = payload;
     // },
     setActiveFilters: (state, { payload }) => {
-      state.activeFilters = payload;
+      state.activeFilters = payload
     },
     setCallbackForm: (state, { payload }) => {
-      state.callbackForm = payload;
+      state.callbackForm = payload
     },
     setCallbackCancelDelete: (state, { payload }) => {
-      state.callbackCancelDelete = payload;
+      state.callbackCancelDelete = payload
     },
-    toggleSidebarMenu: (
-      state,
-      { payload = undefined }: { payload: number | undefined }
-    ) => {
-      let toggle = state.isSidebarMenuCollapsed == 1 ? 0 : 1;
-      toggle = payload != undefined ? payload : toggle;
-      setItem('_sidebar_collapsed', toggle);
-      state.isSidebarMenuCollapsed = toggle;
+    toggleSidebarMenu: (state, { payload = undefined }: { payload: number | undefined }) => {
+      let toggle = state.isSidebarMenuCollapsed == 1 ? 0 : 1
+      toggle = payload != undefined ? payload : toggle
+      setItem('_sidebar_collapsed', toggle)
+      state.isSidebarMenuCollapsed = toggle
     },
 
     setActivePaging: (state, { payload }) => {
-      state.activePaging = payload;
+      state.activePaging = payload
     },
     reloadingData: (state, { payload }) => {
-      state.reloadData = payload;
+      state.reloadData = payload
     },
     setLoading: (state, { payload }) => {
-      const loading = state.loading;
-      state.loading = payload ? loading + 1 : loading == 0 ? 0 : loading - 1;
+      const loading = state.loading
+      state.loading = payload ? loading + 1 : loading == 0 ? 0 : loading - 1
     },
     setSearchValue: (state, { payload }) => {
-      state.searchValue = payload;
+      state.searchValue = payload
     },
     setShowModalBlank: (state, { payload }) => {
-      state.showModalBlank = payload;
+      state.showModalBlank = payload
     },
     setTriggerAddBlock: (state, { payload }) => {
-      state.triggerAddBlock = payload;
+      state.triggerAddBlock = payload
     },
     setPagingLimit: (state, { payload }) => {
-      state.pagingLimit = payload;
-      setItem('pagingLimit', payload);
+      state.pagingLimit = payload
+      setItem('pagingLimit', payload)
     },
     setMenus: (state, { payload }) => {
-      state.menus = payload;
+      state.menus = payload
     },
     setFormTitle: (state, { payload }) => {
-      state.formTitle = payload;
+      state.formTitle = payload
     },
     setLayoutType: (state, { payload }) => {
-      state.layoutType = payload;
+      state.layoutType = payload
       // setItem('layoutType', payload)
     },
     setAutorefresh: (state, { payload }) => {
-      state.autoRefresh = payload;
+      state.autoRefresh = payload
     },
   },
-});
+})
 
 export const {
   toggleSidebarMenu,
@@ -124,5 +119,5 @@ export const {
   setFormTitle,
   setCallbackCancelDelete,
   setAutorefresh,
-} = uiSlice.actions;
-export default uiSlice.reducer;
+} = uiSlice.actions
+export default uiSlice.reducer

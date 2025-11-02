@@ -7,19 +7,23 @@ import { Button } from 'react-bootstrap'
 
 interface Props {
   onAdd: () => void
+  addLabel?: string
+  isUpdateStock?: boolean
 }
 
-export default function DataAction({ onAdd }: Props) {
+export default function DataAction({ onAdd, addLabel = 'Tambah Produk', isUpdateStock = true }: Props) {
   return (
     <DFlexJustifyBetween className="w-100 mb-4">
       <BreadCumbText />
       <DFlex>
-        <Button onClick={onAdd} variant="secondary">
-          <P14Medium>Perbarui Stok Produk</P14Medium>
-        </Button>
+        {isUpdateStock && (
+          <Button onClick={onAdd} variant="secondary">
+            <P14Medium>Perbarui Stok Produk</P14Medium>
+          </Button>
+        )}
         <Button onClick={onAdd}>
           <DFlex className="gap-1">
-            <PlusIcon /> <P14Medium>Tambah Produk</P14Medium>
+            <PlusIcon /> <P14Medium>{addLabel}</P14Medium>
           </DFlex>
         </Button>
       </DFlex>

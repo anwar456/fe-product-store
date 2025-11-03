@@ -28,3 +28,5 @@
 ### 5. Jalankan Server
 Project akan berjalan di:
 - http://localhost:5175
+
+Note: **Untuk testing email dan password ada di video dalam google drive bagian Login_Admin_and_User**

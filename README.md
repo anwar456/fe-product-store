@@ -1,69 +1,32 @@
-# React + TypeScript + Vite
+# 🛍️ fe-product-store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+💻 Frontend untuk sistem Product Store — dibangun menggunakan:
+- ⚡ React Vite 
+- ⚡ Typescript
+- 🎨 React Bootstrap 
+- 🎨 Scss
+- 🧠 Redux Toolkit 
+- 📝 React Hook Form 
+- 🔗 React Router DOM 
+- 🌐 Axios
 
-Currently, two official plugins are available:
+## 🚀 Cara Menjalankan Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Clone Repository
 
-## Expanding the ESLint configuration
+`https://github.com/anwar456/fe-product-store.git`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. Masuk Ke folder
+`cd fe-product-store`
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 3. Install Dependencies
+`npm i --force`
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 4. Start Project
+`npm start`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 5. Jalankan Server
+Project akan berjalan di:
+- http://localhost:5175
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Note: **Untuk testing, email dan password ada di video google drive bagian Login_Admin_and_User**

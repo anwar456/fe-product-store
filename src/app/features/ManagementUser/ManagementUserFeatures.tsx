@@ -121,7 +121,7 @@ export default function ManagementUserFeatures() {
     const tempData = data?.map((item: any) => ({
       name: (
         <DFlex className="gap-3">
-          <LazyImage src={item?.images || '/static/male.svg'} height={30} width={30} style={{ borderRadius: '.3rem' }} />
+          <LazyImage src={item?.image || '/static/male.svg'} height={30} width={30} style={{ borderRadius: '.3rem' }} />
           <P14Medium>{item?.name}</P14Medium>
         </DFlex>
       ),

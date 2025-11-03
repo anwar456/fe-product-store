@@ -81,23 +81,26 @@ export default function UploadImage({ accept = 'image/*', setValue, fieldName, w
     }
   }
 
-  const handleDeleteFile = async (public_id: any, index: number) => {
-    try {
-      const res = await api.delete({
-        url: '/upload/delete',
-        params: { public_id },
-      })
+   const handleDeleteFile = async (public_id: any, index: number) => {
+     if (multiple) {
+       try {
+         await api.delete({
+           url: '/upload/delete',
+           params: { public_id },
+         })
 
-      if (res) {
-        const updatedWatchFiles = watchFiles.filter((_: any, i: number) => i !== index)
-        setValue(fieldName, updatedWatchFiles)
+         const updatedWatchFiles = watchFiles.filter((_: any, i: number) => i !== index)
+         setValue(fieldName, updatedWatchFiles)
+       } catch (error) {
+         console.log(error)
+       }
+     } else {
+       setValue(fieldName, null)
+     }
 
-        setFiles((prev) => prev.filter((item) => item?.public_id !== public_id))
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+     setFiles((prev) => prev.filter((item) => item?.public_id !== public_id))
+   }
+
 
   const handleUploadClick = () => {
     if (fileInputRef.current) {
@@ -105,63 +108,97 @@ export default function UploadImage({ accept = 'image/*', setValue, fieldName, w
     }
   }
 
-  useEffect(() => {
-    if (!files || files.length === 0) return
+   useEffect(() => {
+     if (!files || files.length === 0) return
 
-    const existingFiles = watchFiles || []
-    const mergedFiles = [...existingFiles, ...files]
+     const existingFiles = watchFiles || []
 
-    setValue(fieldName, mergedFiles)
+     if (multiple) {
+       const mergedFiles = [...existingFiles, ...files]
+       setValue(fieldName, mergedFiles)
+     } else {
+       const latestFile = files[files.length - 1]
+       setValue(fieldName, latestFile?.url)
+     }
 
-    setFiles([])
-  }, [files])
+     setFiles([])
+   }, [files])
 
   return (
     <DFlexColumn className="cursor-pointer">
       <CardUploadImage>
-        {size(watchFiles) > 0 ? (
-          <Swiper
-            modules={[Pagination]}
-            pagination={{ clickable: true }}
-            spaceBetween={10}
-            style={{ width: '100%', height: '100%' }}
-            className="position-relative"
-          >
-            {watchFiles?.map((file: any, idx: number) => (
-              <SwiperSlide key={idx}>
-                <CardActionContainer>
-                  <CardAction className="px-2">
-                    <DFlexJustifyBetween>
-                      <P12Medium className="text-truncate elipsis font-weight-500">{file?.fileName}</P12Medium>
-                      <div role="button" className="cursor-pointer" onClick={() => handleDeleteFile(file?.public_id, idx)}>
-                        <TrashIcon />
-                      </div>
-                    </DFlexJustifyBetween>
-                  </CardAction>
-                </CardActionContainer>
-                <LazyImage
-                  src={file?.url}
-                  height="100%"
-                  width="100%"
-                  style={{
-                    borderRadius: '.5rem',
-                    objectFit: 'contain',
-                  }}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        {multiple ? (
+          size(watchFiles) > 0 ? (
+            <Swiper
+              modules={[Pagination]}
+              pagination={{ clickable: true }}
+              spaceBetween={10}
+              style={{ width: '100%', height: '100%' }}
+              className="position-relative"
+            >
+              {watchFiles?.map((file: any, idx: number) => (
+                <SwiperSlide key={idx}>
+                  <CardActionContainer>
+                    <CardAction className="px-2">
+                      <DFlexJustifyBetween>
+                        <P12Medium className="text-truncate elipsis font-weight-500">{file?.fileName}</P12Medium>
+                        <div role="button" className="cursor-pointer" onClick={() => handleDeleteFile(file?.public_id, idx)}>
+                          <TrashIcon />
+                        </div>
+                      </DFlexJustifyBetween>
+                    </CardAction>
+                  </CardActionContainer>
+                  <LazyImage
+                    src={file?.url}
+                    height="100%"
+                    width="100%"
+                    style={{
+                      borderRadius: '.5rem',
+                      objectFit: 'contain',
+                    }}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            <ImageIcon />
+          )
+        ) : watchFiles ? (
+          <>
+            <CardActionContainer style={{top: '0'}}>
+              <CardAction className="px-2">
+                <DFlexJustifyBetween>
+                  <P12Medium className="text-truncate elipsis font-weight-500">Image</P12Medium>
+                  <div role="button" className="cursor-pointer" onClick={() => handleDeleteFile(null, 0)}>
+                    <TrashIcon />
+                  </div>
+                </DFlexJustifyBetween>
+              </CardAction>
+            </CardActionContainer>
+            <LazyImage
+              src={watchFiles}
+              height="100%"
+              width="100%"
+              style={{
+                borderRadius: '.5rem',
+                objectFit: 'contain',
+              }}
+            />
+          </>
         ) : (
           <ImageIcon />
         )}
+
         <Form.Control type="file" className="d-none" ref={fileInputRef} onChange={handleFileChange} accept={accept} multiple={multiple} />
       </CardUploadImage>
+
       <Button className="w-100" variant="secondary" onClick={handleUploadClick} disabled={loading}>
         <DFlex className="justify-content-center">
           <UploadIcon />
           <P14Medium>{loading ? 'Mengunggah...' : 'Unggah Gambar'}</P14Medium>
         </DFlex>
       </Button>
+
       {loading && <ProgressBar now={totalProgress} label={`${totalProgress}%`} className="w-100" style={{ marginTop: '-.5rem' }} />}
     </DFlexColumn>
   )

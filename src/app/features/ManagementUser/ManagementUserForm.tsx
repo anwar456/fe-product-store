@@ -69,7 +69,7 @@ export default function ManagementUserForm({ onHide }: Props) {
         <Modal.Body>
           <Row className="g-3">
             <Col md={4}>
-              <UploadImage accept=".png, .jpg, .jpeg" setValue={setValue} fieldName="images" watch={watch} />
+              <UploadImage accept=".png, .jpg, .jpeg" setValue={setValue} fieldName="image" watch={watch} multiple={false} />
             </Col>
             <Col md={8}>
               <Row className="g-3">
